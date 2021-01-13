@@ -19,21 +19,23 @@ const Employees = () => {
 
     }, []);
 
-    function sortTable() {
-
+    function sortTable(event) {
+        const columnA = `a.${event.target.id}`;
+        const columnB = `b.${event.target.id}`;
+        
         employees.sort((a, b) => {
-            if (a.name.first < b.name.first) {
-              return -1;
+            if (columnA < columnB) {
+                return -1;
             }
-            else if (b.name.first > a.name.first) {
-              return -1;
+            else if (columnA > columnB) {
+                return -1;
             }
             else {
-              return 0;
+                return 0;
             }
-          });
+        });
 
-          setSortState(...employees);
+      setSortState(...employees);
     }
 
     return (
@@ -43,10 +45,10 @@ const Employees = () => {
                 <thead>
                 <tr>    
                     <th></th>
-                    <th onClick={ sortTable }>Name</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>DOB</th>
+                    <th id="name.first" onClick={ sortTable }>Name</th>
+                    <th id="phone" onClick={ sortTable }>Phone</th>
+                    <th id="email" onClick={ sortTable }>Email</th>
+                    <th id="dob" onClick={ sortTable }>DOB</th>
                 </tr>
                 </thead>
 

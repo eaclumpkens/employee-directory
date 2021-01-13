@@ -12,6 +12,7 @@ const Employees = () => {
     const [ tableState, setTable ] = useState([]);
     const [ searchState, setSearch ] = useState([]);
 
+    // CALL EMPLOYEE API
     useEffect(() => {
         axios
             .get('https://randomuser.me/api/?results=142&nat=us')
@@ -21,6 +22,7 @@ const Employees = () => {
 
     }, []);
 
+    // FILTER EMPLOYEES VIA SEARCH
     let filteredEmployees = employees.filter((employee) => {
         return (
           employee.name.first.indexOf(searchState) !== -1 ||
@@ -35,6 +37,7 @@ const Employees = () => {
         setSearch(event.target.value);
     };
 
+    // SORT TABLE
     function sortTable(event) {
         const id = event.target.id;
         

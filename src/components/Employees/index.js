@@ -7,6 +7,7 @@ import "./style.css";
 
 const Employees = () => {
     const [ employees, setEmployees ] = useState([]);
+    const [ sortState, setSortState ] = useState([]);
 
     useEffect(() => {
         axios
@@ -18,6 +19,23 @@ const Employees = () => {
 
     }, []);
 
+    function sortTable() {
+
+        employees.sort((a, b) => {
+            if (a.name.first < b.name.first) {
+              return -1;
+            }
+            else if (b.name.first > a.name.first) {
+              return -1;
+            }
+            else {
+              return 0;
+            }
+          });
+
+          setSortState(...employees);
+    }
+
     return (
         <div className="results">
             <Table striped hover variant="dark">
@@ -25,7 +43,7 @@ const Employees = () => {
                 <thead>
                 <tr>    
                     <th></th>
-                    <th>Name</th>
+                    <th onClick={ sortTable }>Name</th>
                     <th>Phone</th>
                     <th>Email</th>
                     <th>DOB</th>

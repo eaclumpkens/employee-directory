@@ -7,7 +7,7 @@ import "./style.css";
 
 const Employees = () => {
     const [ employees, setEmployees ] = useState([]);
-    const [ sortState, setSortState ] = useState([]);
+    const [ sortState, setSortState ] = useState();
 
     useEffect(() => {
         axios
@@ -20,22 +20,88 @@ const Employees = () => {
     }, []);
 
     function sortTable(event) {
-        const columnA = `a.${event.target.id}`;
-        const columnB = `b.${event.target.id}`;
+        const id = event.target.id;
         
-        employees.sort((a, b) => {
-            if (columnA < columnB) {
-                return -1;
-            }
-            else if (columnA > columnB) {
-                return -1;
-            }
-            else {
-                return 0;
-            }
-        });
+        switch(id) {
+            case "name": 
+                employees.sort((a, b) => {
+                    if (a.name.last < b.name.last) {
+                        return -1;
+                    }
+                    else if (b.name.last > a.name.last) {
+                        return 1;
+                    }
+                    else {
+                        return 0;
+                    }
+                });
+        
+                setSortState(...employees);
+                break;
+            case "phone": 
+                employees.sort((a, b) => {
+                    if (a.phone < b.phone) {
+                        return -1;
+                    }
+                    else if (b.phone > a.phone) {
+                        return 1;
+                    }
+                    else {
+                        return 0;
+                    }
+                });
+        
+                setSortState(...employees);
+                break;
+            case "email": 
+                employees.sort((a, b) => {
+                    if (a.email < b.email) {
+                        return -1;
+                    }
+                    else if (b.email > a.email) {
+                        return 1;
+                    }
+                    else {
+                        return 0;
+                    }
+                });
+        
+                setSortState(...employees);
+                break;    
+            case "dob": 
+                employees.sort((a, b) => {
+                    if (a.dob.date < b.dob.date) {
+                        return -1;
+                    }
+                    else if (b.dob.date > a.dob.date) {
+                        return 1;
+                    }
+                    else {
+                        return 0;
+                    }
+                });
+        
+                setSortState(...employees);
+                break; 
+            default:
+                console.log(`${id}`);
+                break;
 
-      setSortState(...employees);
+        }
+
+        // employees.sort((a, b) => {
+        //     if (a.name.first < b.name.first) {
+        //       return -1;
+        //     }
+        //     else if (b.name.first > a.name.first) {
+        //       return -1;
+        //     }
+        //     else {
+        //       return 0;
+        //     }
+        //   });
+
+        //   setSortState(...employees);
     }
 
     return (
@@ -45,7 +111,7 @@ const Employees = () => {
                 <thead>
                 <tr>    
                     <th></th>
-                    <th id="name.first" onClick={ sortTable }>Name</th>
+                    <th id="name" onClick={ sortTable }>Name</th>
                     <th id="phone" onClick={ sortTable }>Phone</th>
                     <th id="email" onClick={ sortTable }>Email</th>
                     <th id="dob" onClick={ sortTable }>DOB</th>

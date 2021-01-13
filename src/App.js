@@ -15,9 +15,8 @@ class App extends Component {
           <header>
             <h1>Employee Directory</h1>
             <h2>
-              Click on a column title to sort
-              or utilize the search bar to find 
-              the information you need.
+              Click on a column title  or utilize the search bar 
+              to query employee data.
             </h2>
           </header>
           

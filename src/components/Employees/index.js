@@ -19,15 +19,15 @@ const Employees = () => {
 
     return (
         <div className="results">
-            <Table striped hover>
+            <Table striped hover variant="dark">
                 {/* TABLE HEADING */}
                 <thead>
                 <tr>    
-                    <th className="text-center">Photo</th>
-                    <th className="text-center">Name</th>
-                    <th className="text-center">Phone</th>
-                    <th className="text-center">Email</th>
-                    <th className="text-center">DOB</th>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>DOB</th>
                 </tr>
                 </thead>
 

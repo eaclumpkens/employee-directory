@@ -1,9 +1,13 @@
 .App {
   font-family: "Raleway", sans-serif;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-image: linear-gradient(-45deg, #530005, #43000D, #29011C, #100328);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
+  text-align: center;
+  color: white;
 }
+
+/* Header */
 
 header {
   margin: 0px -15px;
@@ -16,18 +20,20 @@ header h2 {
   font-size: 135%;
 }
 
+/* TABLE */
+
+th {
+  font-weight: 500;
+  font-size: 120%;
+  letter-spacing: 0.2rem;
+};
+
 p {
-  font-weight: 400;
+  font-weight: 200;
 }
 
-.directory-head {
-  margin-top: 1.5rem;
-  text-align: center;
-}
-
-.directory-head h3 {
-  font-size: 150%;
-  font-weight: 300;
+#name, #email {
+  font-weight: 600;
 }
 
 @keyframes gradient {

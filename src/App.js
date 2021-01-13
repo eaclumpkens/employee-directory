@@ -4,12 +4,9 @@ import Container from "./components/Container";
 import Row from "./components/Row";
 import Col from "./components/Col";
 import Employees from "./components/Employees";
+import Search from "./components/Search";
 
 class App extends Component {
-
-  // state = {
-  //   search: ""
-  // };
 
   render() {
     return (
@@ -24,6 +21,9 @@ class App extends Component {
               use the search box to narrow your results.
             </h2>
           </header>
+
+          {/* SEARCH BOX */}
+          <Search />
 
           {/* RESULT HEADINGS */}
           <div className="directory-head">

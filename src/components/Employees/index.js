@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Moment from "react-moment";
 import axios from "axios";
 import Col from "../Col";
 import Row from "../Row";
@@ -34,7 +35,7 @@ const Employees = () => {
                             <p>{employee.email}</p>
                         </Col>
                         <Col id="dob" size="2">
-                            <p>{employee.dob.date}</p>
+                            <p><Moment format="MMM DD, YYYY">{employee.dob.date}</Moment></p>
                         </Col>
                     </Row>
                 )

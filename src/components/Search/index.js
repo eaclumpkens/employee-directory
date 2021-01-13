@@ -1,14 +1,20 @@
 import React from "react";
-import { Form } from "react-bootstrap";
+import { Row, Col, Form } from "react-bootstrap";
 
 function Search() {
     return(
         <div class="search-box">
-            <Form>
-                <Form.Group className="col-md-5" controlId="formBasicEmail">
-                    <Form.Control type="search" placeholder="search" />
-                </Form.Group>
-            </Form>
+            <Row>
+                <Col/>
+                <Col xs={6}>
+                    <Form>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Control type="search" placeholder="search" />
+                        </Form.Group>
+                    </Form>
+                </Col>
+                <Col/>
+            </Row>
         </div>
     )
 };

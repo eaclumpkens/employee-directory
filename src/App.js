@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import './App.css';
-import Container from "./components/Container";
 import Employees from "./components/Employees";
 import Search from "./components/Search";
+import { Container } from "react-bootstrap";
 
 class App extends Component {
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, Form } from "react-bootstrap";
 
-function Search() {
+function Search({ onChange }) {
     return(
         <div class="search-box">
             <Row>
@@ -9,7 +9,7 @@ function Search() {
                 <Col xs={6}>
                     <Form>
                         <Form.Group controlId="formBasicEmail">
-                            <Form.Control type="search" placeholder="search" />
+                            <Form.Control onChange= { onChange } type="search" placeholder="Search by Employee Name" />
                         </Form.Group>
                     </Form>
                 </Col>

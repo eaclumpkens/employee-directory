@@ -1,23 +1,38 @@
+import generateUniqueId from 'generate-unique-id';
 import { useState, useEffect } from "react";
-import Moment from "react-moment";
 import { Table } from "react-bootstrap";
+import Moment from "react-moment";
+import Search from "../Search";
 import axios from "axios";
 import "./style.css";
 
 
 const Employees = () => {
     const [ employees, setEmployees ] = useState([]);
-    const [ sortState, setSortState ] = useState();
+    const [ searchState, setSearch ] = useState('');
+    const [ tableState, setTable ] = useState([]);
 
     useEffect(() => {
         axios
             .get('https://randomuser.me/api/?results=142&nat=us')
             .then((res) => {
                 setEmployees(res.data.results);
-                console.log(res.data.results);
             });
 
     }, []);
+
+    let filteredEmployees = employees.filter((employee) => {
+        return (
+          employee.name.first.toLowerCase().indexOf(searchState) !== -1 ||
+          employee.name.last.toLowerCase().indexOf(searchState) !== -1 ||
+          employee.email.toLowerCase().indexOf(searchState) !== -1 ||
+          employee.phone.indexOf(searchState) !== -1
+        );
+      });
+
+    function onChange(event) {
+        setSearch(event.target.value );
+    };
 
     function sortTable(event) {
         const id = event.target.id;
@@ -36,7 +51,7 @@ const Employees = () => {
                     }
                 });
         
-                setSortState(...employees);
+                setTable(...employees);
                 break;
             case "phone": 
                 employees.sort((a, b) => {
@@ -51,7 +66,7 @@ const Employees = () => {
                     }
                 });
         
-                setSortState(...employees);
+                setTable(...employees);
                 break;
             case "email": 
                 employees.sort((a, b) => {
@@ -66,7 +81,7 @@ const Employees = () => {
                     }
                 });
         
-                setSortState(...employees);
+                setTable(...employees);
                 break;    
             case "dob": 
                 employees.sort((a, b) => {
@@ -81,31 +96,19 @@ const Employees = () => {
                     }
                 });
         
-                setSortState(...employees);
+                setTable(...employees);
                 break; 
             default:
                 console.log(`${id}`);
                 break;
 
         }
-
-        // employees.sort((a, b) => {
-        //     if (a.name.first < b.name.first) {
-        //       return -1;
-        //     }
-        //     else if (b.name.first > a.name.first) {
-        //       return -1;
-        //     }
-        //     else {
-        //       return 0;
-        //     }
-        //   });
-
-        //   setSortState(...employees);
     }
 
     return (
         <div className="results">
+
+            <Search onChange= { onChange }/>
             <Table striped hover variant="dark">
                 {/* TABLE HEADING */}
                 <thead>
@@ -120,9 +123,14 @@ const Employees = () => {
 
                 {/* TABLE BODY */}
                 <tbody>
-                {employees.map((employee) => {
+                { filteredEmployees.map((employee, index) => {
+                    const id = generateUniqueId({
+                        length: 5,
+                        useLetters: false
+                    });
+
                     return (
-                    <tr>
+                    <tr key={ index } id={ id }>
                         <td id="image">
                             <img
                                 src={employee.picture.medium}
@@ -141,7 +149,7 @@ const Employees = () => {
                         </td>
                     </tr>
                     );
-                })}
+                }) }
                 </tbody>
                 
             </Table>

@@ -9,8 +9,8 @@ import "./style.css";
 
 const Employees = () => {
     const [ employees, setEmployees ] = useState([]);
-    const [ searchState, setSearch ] = useState('');
     const [ tableState, setTable ] = useState([]);
+    const [ searchState, setSearch ] = useState([]);
 
     useEffect(() => {
         axios
@@ -23,15 +23,16 @@ const Employees = () => {
 
     let filteredEmployees = employees.filter((employee) => {
         return (
-          employee.name.first.toLowerCase().indexOf(searchState) !== -1 ||
-          employee.name.last.toLowerCase().indexOf(searchState) !== -1 ||
-          employee.email.toLowerCase().indexOf(searchState) !== -1 ||
-          employee.phone.indexOf(searchState) !== -1
+          employee.name.first.indexOf(searchState) !== -1 ||
+          employee.name.last.indexOf(searchState) !== -1 ||
+          employee.email.indexOf(searchState) !== -1 ||
+          employee.phone.indexOf(searchState) !== -1 ||
+          employee.dob.date.indexOf(searchState) !== -1
         );
-      });
+    });
 
     function onChange(event) {
-        setSearch(event.target.value );
+        setSearch(event.target.value);
     };
 
     function sortTable(event) {

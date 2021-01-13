@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Moment from "react-moment";
 import { Table } from "react-bootstrap";
 import axios from "axios";
+import "./style.css";
 
 
 const Employees = () => {

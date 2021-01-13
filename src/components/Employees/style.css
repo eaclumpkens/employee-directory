@@ -1,0 +1,18 @@
+
+th {
+    font-size: 120%;
+    font-weight: 500 !important;
+    letter-spacing: 0.15rem;
+}
+
+p {
+    font-weight: 200;
+}
+
+img {
+    border-radius: 20%;
+}
+
+#name, #email {
+    font-weight: 600;
+}
